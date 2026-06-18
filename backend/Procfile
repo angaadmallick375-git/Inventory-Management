@@ -1,0 +1,4 @@
+# Procfile — used by Heroku, Railway (fallback), and similar PaaS platforms
+# Railway prefers railway.json but will fall back to this.
+
+web: uvicorn app.main:app --host 0.0.0.0 --port $PORT
