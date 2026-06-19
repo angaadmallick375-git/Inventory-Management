@@ -45,21 +45,28 @@ class Settings(BaseSettings):
     )
 
     def get_database_url(self) -> str:
-        """Return DATABASE_URL if explicitly set, otherwise build from parts."""
+        """
+        Return the database URL to use, in priority order:
+          1. DATABASE_URL env var (Railway / Render / any hosted DB)
+          2. POSTGRES_* parts assembled into a postgresql:// URL (Docker / local PG)
+          3. SQLite fallback for local development with no database installed
+        """
         if self.DATABASE_URL:
             # Render/Railway provide postgres:// — SQLAlchemy needs postgresql://
             url = self.DATABASE_URL
             if url.startswith("postgres://"):
                 url = url.replace("postgres://", "postgresql://", 1)
             return url
-        if not self.POSTGRES_USER or not self.POSTGRES_PASSWORD:
-            raise ValueError(
-                "Set DATABASE_URL or all of POSTGRES_USER / POSTGRES_PASSWORD / POSTGRES_DB"
+        if self.POSTGRES_USER and self.POSTGRES_PASSWORD:
+            return (
+                f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
+                f"@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
             )
-        return (
-            f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
-            f"@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
-        )
+        # ── Local dev fallback: SQLite (no install required) ──────────────────
+        import os, pathlib
+        db_path = pathlib.Path(__file__).parent.parent / "inventory_local.db"
+        print(f"[WARNING] No DATABASE_URL or POSTGRES_* set — using SQLite: {db_path}")
+        return f"sqlite:///{db_path}"
 
     def get_allowed_origins(self) -> List[str]:
         """Parse comma-separated ALLOWED_ORIGINS into a list."""
