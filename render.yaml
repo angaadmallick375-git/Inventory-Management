@@ -24,8 +24,8 @@ services:
           name: inventoryos-db
           property: connectionString
       - key: ALLOWED_ORIGINS
-        # Replace with your Vercel/Netlify frontend URL after deploying frontend
-        value: "https://inventoryos.vercel.app"
+        # Set to your Vercel URL after deploying frontend. Use * for now.
+        value: "*"
       - key: PYTHON_VERSION
         value: "3.11.0"
 
