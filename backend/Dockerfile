@@ -21,4 +21,4 @@ EXPOSE 8000
 
 # Production start command — no --reload flag
 # docker-compose.yml overrides this with --reload for local dev
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
