@@ -9,13 +9,10 @@
 
 | Resource | URL |
 |---|---|
-| **GitHub Repo** | `https://github.com/YOUR_USERNAME/inventory-management` |
-| **Docker Hub Image** | `https://hub.docker.com/r/YOUR_USERNAME/inventoryos-backend` |
-| **Live Frontend (Vercel)** | `https://inventoryos.vercel.app` |
-| **Live Backend API** | `https://inventoryos-backend.up.railway.app` |
-| **Live API Docs** | `https://inventoryos-backend.up.railway.app/docs` |
-
-> ⚠️ Replace all placeholder URLs above with your real deployment URLs before submission.
+| **GitHub Repo** | `https://github.com/angaadmallick375-git/Inventory-Management` |
+| **Live Frontend (Vercel)** | `https://frontend-nine-xi-46.vercel.app` |
+| **Live Backend API** | `https://inventoryos-backend-production.up.railway.app` |
+| **Live API Docs** | `https://inventoryos-backend-production.up.railway.app/docs` |
 
 ---
 
