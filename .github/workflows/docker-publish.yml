@@ -21,4 +21,4 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/inventoryos-backend:latest
+          tags: angaadmallick/inventoryos-backend:latest
