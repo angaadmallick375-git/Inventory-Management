@@ -10,6 +10,7 @@
 | Resource | URL |
 |---|---|
 | **GitHub Repo** | `https://github.com/angaadmallick375-git/Inventory-Management` |
+| **Docker Hub Image** | `https://hub.docker.com/r/angaadmallick/inventoryos-backend` |
 | **Live Frontend (Vercel)** | `https://frontend-nine-xi-46.vercel.app` |
 | **Live Backend API** | `https://inventoryos-backend-production.up.railway.app` |
 | **Live API Docs** | `https://inventoryos-backend-production.up.railway.app/docs` |
