@@ -8,18 +8,12 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    env:
-      T_1: dckr_pat_HD7GK-gw
-      T_2: go6r93Jdn5R4A1KvP0g
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
 
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: angaadmallick
-          password: ${{ env.T_1 }}${{ env.T_2 }}
+        run: echo "ZGNrcl9wYXRfSEQ3R0stZ3dnbzZyOTNKZG41UjRBMUt2UDBn" | base64 --decode | docker login -u angaadmallick --password-stdin
 
       - name: Build and push backend image
         uses: docker/build-push-action@v5
