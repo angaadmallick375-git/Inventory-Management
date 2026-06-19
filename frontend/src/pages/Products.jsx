@@ -15,6 +15,19 @@ function getStockClass(qty) {
   return 'stock-ok'
 }
 
+// Reusable labelled field wrapper
+const Field = ({ id, label, error, children }) => (
+  <div className="form-group">
+    <label htmlFor={id}>{label}</label>
+    {children}
+    {error && (
+      <span className="field-error">
+        <AlertCircle size={11} /> {error}
+      </span>
+    )}
+  </div>
+)
+
 export default function Products() {
   const [products, setProducts]         = useState([])
   const [loading, setLoading]           = useState(true)
@@ -116,18 +129,7 @@ export default function Products() {
     } catch { toast.error('Failed to delete product') }
   }
 
-  // Reusable labelled field wrapper
-  const Field = ({ id, label, error, children }) => (
-    <div className="form-group">
-      <label htmlFor={id}>{label}</label>
-      {children}
-      {error && (
-        <span className="field-error">
-          <AlertCircle size={11} /> {error}
-        </span>
-      )}
-    </div>
-  )
+
 
   return (
     <div className="page-wrapper fade-in">
